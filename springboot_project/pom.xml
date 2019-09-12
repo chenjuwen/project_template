@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.seasy</groupId>
+  <artifactId>springboot_project</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+  
+  <parent>
+  	<groupId>org.springframework.boot</groupId>
+  	<artifactId>spring-boot-starter-parent</artifactId>
+  	<version>2.0.8.RELEASE</version>
+  	<relativePath/>
+  </parent>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+  </properties>
+
+  <dependencies>
+  	<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter</artifactId>
+    </dependency>    
+  	<dependency>  
+        <groupId>org.springframework.boot</groupId>  
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+	<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <optional>true</optional>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    <finalName>springboot_project</finalName>
+    
+      <plugins>
+   			<plugin>
+           		<groupId>org.apache.maven.plugins</groupId>
+           		<artifactId>maven-compiler-plugin</artifactId>
+           		<configuration>
+               		<source>1.8</source>
+               		<target>1.8</target>
+                	<encoding>UTF-8</encoding>
+           		</configuration>
+       		</plugin>
+            
+	        <!-- 创建可执行jar：class文件、jar文件等 -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<!-- 用该版本才能成功访问jsp页面 -->
+				<version>1.4.2.RELEASE</version>
+				<configuration>
+                	<!--fork :  如果没有该项配置，devtools不会起作用，即应用不会restart -->
+	            	<fork>true</fork>
+	            </configuration>
+			</plugin>
+		
+			<!-- 打包时跳过junit单元测试 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		
+			<!-- 忽略无web.xml警告 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+  
+	  		<!-- 自定义工程打包过程 -->
+	       	<plugin>  
+	           	<groupId>org.apache.maven.plugins</groupId>  
+	           	<artifactId>maven-assembly-plugin</artifactId>
+	           	<version>2.6</version>
+	           	<configuration>
+	               	<descriptors>  
+	                   	<descriptor>src/main/assembly/package.xml</descriptor>  
+	               	</descriptors>  
+	           	</configuration>  
+	           	<executions>  
+	                <execution>  
+	                    <id>make-assembly</id>  
+	                    <phase>package</phase>  
+	                    <goals>  
+	                        <goal>single</goal>  
+	                    </goals>
+	                </execution>
+	           	</executions>
+	       	</plugin>
+      </plugins>
+      
+      <resources>
+		<!-- webapp下的文件需要复制到META-INF/resources目录下 -->
+        <resource>
+            <directory>${basedir}/src/main/webapp</directory>
+ 			<targetPath>META-INF/resources</targetPath>
+            <includes>
+                <include>**/**</include>
+            </includes>
+        </resource>
+        
+        <!-- 复制到BOOT-INF\classes目录下 -->
+        <resource>
+            <directory>src/main/resources</directory>
+            <filtering>false</filtering>
+            <excludes>
+                <exclude>application.properties</exclude>
+                <exclude>logback.xml</exclude>
+            </excludes>
+        </resource>
+    </resources>
+  </build>
+  
+</project>
