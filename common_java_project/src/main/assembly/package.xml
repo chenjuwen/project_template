@@ -29,6 +29,14 @@
         </fileSet>
         
         <fileSet>  
+            <directory>/certificate</directory>  
+            <outputDirectory>/certificate</outputDirectory>  
+            <includes>  
+                <include>*.*</include>
+            </includes>  
+        </fileSet>
+        
+        <fileSet>  
             <directory>/target</directory>  
             <outputDirectory>/</outputDirectory>  
             <includes>  
