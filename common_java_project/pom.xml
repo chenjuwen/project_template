@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.seasy</groupId>
-  <artifactId>redisagent</artifactId>
+  <artifactId>common_java_project</artifactId>
   <version>0.1.0</version>
   <packaging>jar</packaging>
 
@@ -32,7 +32,7 @@
   </dependencies>
   	
   	<build>
-    	<finalName>redisagent-${version}</finalName>
+    	<finalName>common_java_project-${version}</finalName>
     	
     	<plugins>
 	    	<plugin>

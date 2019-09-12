@@ -40,7 +40,7 @@
             <directory>/target</directory>  
             <outputDirectory>/</outputDirectory>  
             <includes>  
-                <include>redisagent*.jar</include>
+                <include>common_java_project*.jar</include>
             </includes>  
         </fileSet>
     </fileSets>  
