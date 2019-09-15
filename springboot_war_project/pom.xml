@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.seasy</groupId>
+  <artifactId>springboot_war_project</artifactId>
+  <version>1.0.0</version>
+  <packaging>war</packaging>
+  
+  <parent>
+  	<groupId>org.springframework.boot</groupId>
+  	<artifactId>spring-boot-starter-parent</artifactId>
+  	<version>2.0.8.RELEASE</version>
+  	<relativePath/>
+  </parent>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+    
+    <!-- 外置Tomcat时使用特定版本的Tomcat -->
+    <tomcat.version>8.5.37</tomcat.version>
+  </properties>
+
+  <dependencies>   
+    <!-- 打包成war包，并部署到外部的tomcat -->
+  	<dependency>  
+        <groupId>org.springframework.boot</groupId>  
+        <artifactId>spring-boot-starter-web</artifactId>
+        <exclusions>  
+        	<!-- 排除内置的Tomcat -->
+	        <exclusion>  
+	            <groupId>org.springframework.boot</groupId>  
+	            <artifactId>spring-boot-starter-tomcat</artifactId>  
+	        </exclusion>  
+            <exclusion>
+	    		<groupId>ch.qos.logback</groupId>
+	    		<artifactId>logback-classic</artifactId>
+            </exclusion>
+    	</exclusions> 
+    </dependency>
+    
+	<!-- Tomcat容器 -->
+    <dependency>
+     	<groupId>org.springframework.boot</groupId>
+      	<artifactId>spring-boot-starter-tomcat</artifactId>
+      	<scope>provided</scope>
+  	</dependency>
+	<dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-servlet-api</artifactId>
+        <version>7.0.69</version>
+        <scope>provided</scope>
+	</dependency>
+	<dependency>  
+    	<groupId>javax.servlet</groupId>  
+        <artifactId>javax.servlet-api</artifactId> 
+    	<scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-jasper</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    <finalName>springboot_war_project</finalName>
+    
+      <plugins>
+   			<plugin>
+           		<groupId>org.apache.maven.plugins</groupId>
+           		<artifactId>maven-compiler-plugin</artifactId>
+           		<configuration>
+               		<source>1.8</source>
+               		<target>1.8</target>
+                	<encoding>UTF-8</encoding>
+           		</configuration>
+       		</plugin>
+       		
+			<plugin>       
+			   	<groupId>org.apache.maven.plugins</groupId>       
+			   	<artifactId>maven-war-plugin</artifactId>       
+			   	<configuration>       
+			    	<failOnMissingWebXml>false</failOnMissingWebXml>      
+			   	</configuration>       
+	  		</plugin>
+      </plugins>
+  </build>
+  
+</project>
