@@ -11,16 +11,16 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * 继承SpringBootServletInitializer让spring-boot项目在外部web容器中运行
  */
 @SpringBootApplication
-public class Application extends SpringBootServletInitializer {
-	private static Logger logger = LoggerFactory.getLogger(Application.class);
-	
-	public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+public class Main extends SpringBootServletInitializer {
+	private static Logger logger = LoggerFactory.getLogger(Main.class);
 	
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 		logger.info("SpringBootApplication run by war...");
-		return builder.sources(Application.class);
+		return builder.sources(Main.class);
 	}
+	
+	public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
+    }
 }

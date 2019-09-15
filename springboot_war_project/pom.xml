@@ -3,8 +3,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.seasy</groupId>
-  <artifactId>springboot_war_project</artifactId>
+  <artifactId>springboot_war</artifactId>
   <version>1.0.0</version>
+  
+  <!-- war包 -->
   <packaging>war</packaging>
   
   <parent>
@@ -24,33 +26,23 @@
   </properties>
 
   <dependencies>   
-    <!-- 打包成war包，并部署到外部的tomcat -->
   	<dependency>  
         <groupId>org.springframework.boot</groupId>  
         <artifactId>spring-boot-starter-web</artifactId>
-        <exclusions>  
-        	<!-- 排除内置的Tomcat -->
-	        <exclusion>  
-	            <groupId>org.springframework.boot</groupId>  
-	            <artifactId>spring-boot-starter-tomcat</artifactId>  
-	        </exclusion>  
-            <exclusion>
-	    		<groupId>ch.qos.logback</groupId>
-	    		<artifactId>logback-classic</artifactId>
-            </exclusion>
-    	</exclusions> 
     </dependency>
     
-	<!-- Tomcat容器 -->
+	<!-- 外置tomcat容器 -->
     <dependency>
      	<groupId>org.springframework.boot</groupId>
       	<artifactId>spring-boot-starter-tomcat</artifactId>
       	<scope>provided</scope>
   	</dependency>
+  	
+  	<!-- 只在IDE中启动应用需要的包 -->
 	<dependency>
         <groupId>org.apache.tomcat</groupId>
         <artifactId>tomcat-servlet-api</artifactId>
-        <version>7.0.69</version>
+        <version>${tomcat.version}</version>
         <scope>provided</scope>
 	</dependency>
 	<dependency>  
@@ -70,7 +62,7 @@
   </dependencies>
   
   <build>
-    <finalName>springboot_war_project</finalName>
+    <finalName>springboot_war</finalName>
     
       <plugins>
    			<plugin>

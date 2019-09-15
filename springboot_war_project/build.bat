@@ -1,1 +1,1 @@
-mvn clean package &pause
+mvn clean package -Dmaven.test.skip=true &pause
