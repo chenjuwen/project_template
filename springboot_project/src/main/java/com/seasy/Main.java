@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class Main{
 	public static void main(String[] args){
+		//关闭图案
+//		new SpringApplicationBuilder(Main.class).bannerMode(Banner.Mode.OFF).run(args);
+		
 		SpringApplication.run(Main.class, args);
 	}
 	
