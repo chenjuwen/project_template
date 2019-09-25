@@ -19,8 +19,8 @@
   
     <fileSets>
         <fileSet>  
-            <directory>/</directory>  
-            <outputDirectory>/</outputDirectory>  
+            <directory>./</directory>  
+            <outputDirectory>./</outputDirectory>  
             <includes>  
                 <include>logback.xml</include>
                 <include>run.bat</include>
@@ -29,7 +29,7 @@
         </fileSet>
         
         <fileSet>  
-            <directory>/certificate</directory>  
+            <directory>./certificate</directory>  
             <outputDirectory>/certificate</outputDirectory>  
             <includes>  
                 <include>*.*</include>
@@ -37,8 +37,8 @@
         </fileSet>
         
         <fileSet>  
-            <directory>/target</directory>  
-            <outputDirectory>/</outputDirectory>  
+            <directory>./target</directory>  
+            <outputDirectory>./</outputDirectory>  
             <includes>  
                 <include>common_java_project*.jar</include>
             </includes>  
